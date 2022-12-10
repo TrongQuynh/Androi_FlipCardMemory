@@ -13,6 +13,13 @@
         android:theme="@style/Theme.GameCenter"
         tools:targetApi="31">
         <activity
+            android:name=".FlipCardMemory_Menu"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MemoryCard"
             android:exported="false">
             <meta-data

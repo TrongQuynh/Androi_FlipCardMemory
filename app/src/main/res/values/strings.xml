@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GameCenter</string>
+
+    <string-array name="mode_game">
+        <item>Sample</item>
+        <item>Remember All</item>
+        <item>Time Challenge</item>
+        <item>Limited Tries</item>
+    </string-array>
 </resources>

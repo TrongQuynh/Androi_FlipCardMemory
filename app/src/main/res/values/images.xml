@@ -1,8 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="image_numbers">
-        <item>"number_1_1"</item>
-        <item>"number_2_2"</item>
-        <item>"number_3_3"</item>
+    <array name="number_theme">
+        <item>"number_1"</item>
+        <item>"number_3"</item>
+        <item>"number_4"</item>
+        <item>"number_6"</item>
+        <item>"number_7"</item>
+
+        <item>"number_35"</item>
+        <item>"number_8"</item>
+        <item>"number_10"</item>
+        <item>"number_12"</item>
+        <item>"number_13"</item>
+
+        <item>"number_22"</item>
+        <item>"number_25"</item>
+        <item>"number_29"</item>
+        <item>"number_41"</item>
+        <item>"number_42"</item>
+
+        <item>"number_45"</item>
+        <item>"number_47"</item>
+        <item>"number_38"</item>
+        <item>"number_27"</item>
+        <item>"number_16"</item>
+
+
+    </array>
+
+    <array name="food_theme">
+        <item>"number_1"</item>
+        <item>"number_3"</item>
+        <item>"number_4"</item>
+        <item>"number_6"</item>
+        <item>"number_7"</item>
+
+        <item>"number_35"</item>
+        <item>"number_8"</item>
+        <item>"number_10"</item>
+        <item>"number_12"</item>
+        <item>"number_13"</item>
+
+        <item>"number_22"</item>
+        <item>"number_25"</item>
+        <item>"number_29"</item>
+        <item>"number_41"</item>
+        <item>"number_42"</item>
+
+        <item>"number_45"</item>
+        <item>"number_47"</item>
+        <item>"number_38"</item>
+        <item>"number_27"</item>
+        <item>"number_16"</item>
+    </array>
+
+    <array name="letter_theme">
+        <item>"number_1"</item>
+        <item>"number_3"</item>
+        <item>"number_4"</item>
+        <item>"number_6"</item>
+        <item>"number_7"</item>
+
+        <item>"number_35"</item>
+        <item>"number_8"</item>
+        <item>"number_10"</item>
+        <item>"number_12"</item>
+        <item>"number_13"</item>
+
+        <item>"number_22"</item>
+        <item>"number_25"</item>
+        <item>"number_29"</item>
+        <item>"number_41"</item>
+        <item>"number_42"</item>
+
+        <item>"number_45"</item>
+        <item>"number_47"</item>
+        <item>"number_38"</item>
+        <item>"number_27"</item>
+        <item>"number_16"</item>
+    </array>
+
+
+    <!--  Theme  -->
+    <array name="FCM_Theme">
+        <item>"FCM_FoodTheme"</item>
+        <item>"FCM_WordTheme"</item>
+        <item>"FCM_NumberTheme"</item>
     </array>
 </resources>

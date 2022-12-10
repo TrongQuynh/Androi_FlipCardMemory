@@ -6,6 +6,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,10 +23,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String url = "drawable/"+"number_3_3";
+
+        int width  = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+        Log.d("DEBUG", "URL: " + width + " - " + height);
+
+        String url = "drawable/"+"number_1";
         int imageKey = getResources().getIdentifier(url, "drawable", getPackageName());
         ((ImageView) findViewById(R.id.imageView)).setImageResource(imageKey);
-        Log.d("DEBUG", "URL: " + imageKey);
+        ((ImageView) findViewById(R.id.imageView)).setX(((float) width/2) - ((ImageView) findViewById(R.id.imageView)).getDrawable().getIntrinsicWidth());
+//        ((ImageView) findViewById(R.id.imageView)).setY((float) 0.2);
+
 
         try {
             (findViewById(R.id.card_font)).setOnClickListener(new View.OnClickListener() {
@@ -71,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void SwitchActivity(){
         try {
-            Intent i = new Intent(this, MemoryCard.class);
+            Intent i = new Intent(this, FlipCardMemory_Menu.class);
             startActivity(i);
         }catch (Exception e ){
 

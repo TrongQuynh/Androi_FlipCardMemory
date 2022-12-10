@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.gamecenter.R;
 import com.example.gamecenter.games.CardInfo;
+import com.example.gamecenter.games.ModeGame;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -32,8 +33,9 @@ import java.util.TimerTask;
 
 public class MemoryCard extends AppCompatActivity {
 
-    private int row = 3;
-    private int colmn = 2;
+    private int row = 4;
+    private int colmn = 3;
+    private ModeGame modeGame;
     private int number_of_pair = (row * colmn) / 2;
     private ArrayList<Integer> card_flip_list = new ArrayList<Integer>();// Store ID card
     private ArrayList<CardInfo> cardInfo_list = new ArrayList<CardInfo>();
@@ -42,6 +44,12 @@ public class MemoryCard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_card);
+
+        this.modeGame = getIntent().getParcelableExtra("ModeGameInfo");
+        row = modeGame.getAmountRow();
+        colmn = modeGame.getAmountColumn();
+        number_of_pair = (row * colmn) / 2;
+
         initBoard();
     }
 
@@ -51,11 +59,12 @@ public class MemoryCard extends AppCompatActivity {
 
         for(int i = 0;i<row;i++){
             TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 300,1.0f);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(280, 280,1.0f);
+//            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 300);
             TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
 
             lp.gravity = Gravity.CENTER;
-            row.setBackgroundColor(Color.YELLOW);
+//            row.setBackgroundColor(Color.YELLOW);
             row.setLayoutParams(tableRowParams);
 
             for(int y = 0;y<colmn;y++){
@@ -69,6 +78,7 @@ public class MemoryCard extends AppCompatActivity {
                 CardInfo cardInfo = new CardInfo(imageView.getId(),pair_number, imageCard);
                 cardInfo_list.add(cardInfo);
                 imageView.setImageResource(R.drawable.dot);
+//                imageView.setImageResource(imageCard);
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -108,8 +118,14 @@ public class MemoryCard extends AppCompatActivity {
 
     // Return the image
     private int generateCardImage(int pair_number){
-        String[] all_image_numbers = getResources().getStringArray(R.array.image_numbers);
-        String url = "drawable/"+all_image_numbers[pair_number];
+        String[] all_image = getResources().getStringArray(R.array.letter_theme);
+        if(this.modeGame.getThemeName() == "number_theme"){
+            all_image = getResources().getStringArray(R.array.number_theme);
+        }else if(this.modeGame.getThemeName() == "food_theme"){
+            all_image = getResources().getStringArray(R.array.food_theme);
+        }
+
+        String url = "drawable/"+all_image[pair_number];
         int imageKey = getResources().getIdentifier(url, "drawable", getPackageName());
         return imageKey;
     }
@@ -186,7 +202,8 @@ public class MemoryCard extends AppCompatActivity {
                     ((ImageView)view).setImageResource(R.drawable.dot);
                     ((ImageView)view).setBackgroundColor(Color.rgb(50,50,50));
 
-                    TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 300,1.0f);
+//                    TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 300,1.0f);
+                    TableRow.LayoutParams lp = new TableRow.LayoutParams(280, 280,1.0f);
                     ((ImageView)view).setLayoutParams(lp);
                     oa2.start();
                 }
@@ -220,9 +237,9 @@ public class MemoryCard extends AppCompatActivity {
     private void setImageForCard(View view){
         int image = findCardByID(view.getId()).getImage();
         ((ImageView)view).setImageResource(image);
-        ((ImageView)view).setBackgroundColor(Color.GREEN);
+//        ((ImageView)view).setBackgroundColor(Color.GREEN);
 
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 300,1.0f);
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(280, 280,1.0f);
         ((ImageView)view).setLayoutParams(lp);
     }
 
@@ -261,6 +278,12 @@ public class MemoryCard extends AppCompatActivity {
         // init view for dialog
         final Button btn_Replay = dialog.findViewById(R.id.btn_Replay) ;
 
+        btn_Replay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initBoard();
+            }
+        });
 
         dialog.show();
     }
