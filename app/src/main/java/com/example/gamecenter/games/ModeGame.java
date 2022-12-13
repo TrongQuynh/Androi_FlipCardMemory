@@ -7,8 +7,6 @@ import android.util.Log;
 public class ModeGame implements Parcelable {
     private String modeName; // Simple, Limited Tries
     private String sizeBoard; // 3x2,4x4
-    private int rowNumber;
-    private int columnNumber;
     private String themeName; // number, animal, word
 
     public ModeGame() {
@@ -22,11 +20,9 @@ public class ModeGame implements Parcelable {
 
 
     protected ModeGame(Parcel in) {
-        sizeBoard = in.readString();
-        rowNumber = in.readInt();
-        columnNumber = in.readInt();
-        themeName = in.readString();
         modeName = in.readString();
+        sizeBoard = in.readString();
+        themeName = in.readString();
     }
 
     public static final Creator<ModeGame> CREATOR = new Creator<ModeGame>() {
@@ -49,21 +45,6 @@ public class ModeGame implements Parcelable {
         this.sizeBoard = sizeBoard;
     }
 
-    public int getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(int rowNumber) {
-        this.rowNumber = rowNumber;
-    }
-
-    public int getColumnNumber() {
-        return columnNumber;
-    }
-
-    public void setColumnNumber(int columnNumber) {
-        this.columnNumber = columnNumber;
-    }
 
     public String getThemeName() {
         return themeName;
@@ -93,14 +74,26 @@ public class ModeGame implements Parcelable {
         return column;
     }
 
+    public int getSizeCard(){
 
+        if(this.getSizeBoard().contains("3x2")){
+            return 420;
+        }
+        else if(this.sizeBoard.contains("4x3")){
+            return 330;
+        }else if(this.sizeBoard.contains("4x4") || this.sizeBoard.contains("5x4")){
+            return 250;
+        }
+        else if(this.sizeBoard.contains("6x5") || this.sizeBoard.contains("8x5")){
+            return 200;
+        }
+        return 10;
+    }
 
     @Override
     public String toString() {
         return "ModeGame{" +
                 "modeName='" + sizeBoard + '\'' +
-                ", rowNumber=" + rowNumber +
-                ", columnNumber=" + columnNumber +
                 ", theme='" + themeName + '\'' +
                 '}';
     }
@@ -112,9 +105,8 @@ public class ModeGame implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(modeName);
         parcel.writeString(sizeBoard);
-        parcel.writeInt(rowNumber);
-        parcel.writeInt(columnNumber);
         parcel.writeString(themeName);
     }
 }

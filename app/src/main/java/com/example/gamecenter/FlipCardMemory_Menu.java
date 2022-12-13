@@ -33,6 +33,7 @@ public class FlipCardMemory_Menu extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flip_card_memory_menu);
 
+        getSupportActionBar().setTitle("Memory Game");
 
         this.currentTheme = R.id.number_theme;
         this.currentSize = "3x2";
@@ -45,7 +46,7 @@ public class FlipCardMemory_Menu extends AppCompatActivity implements AdapterVie
     }
 
     private void init_spinner(){
-        Spinner spinner_ModeGame = (Spinner) findViewById(R.id.cbox_ModeGame);
+        Spinner spinner_ModeGame = (Spinner) findViewById(R.id.spinner_ModeGame);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.mode_game, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spinner_ModeGame.setAdapter(adapter);
@@ -95,6 +96,15 @@ public class FlipCardMemory_Menu extends AppCompatActivity implements AdapterVie
             }
         });
 
+        // Word Theme
+        (findViewById(R.id.animal_theme)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setColorCurrentThemeForText(R.id.txt_animal_theme);
+                currentTheme = R.id.animal_theme;
+            }
+        });
+
         ((HorizontalScrollView) findViewById(R.id.theme_list)).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -131,9 +141,9 @@ public class FlipCardMemory_Menu extends AppCompatActivity implements AdapterVie
 
                         String sizeBoard = getResources().getResourceName(view.getId()).replaceAll("com.example.gamecenter:id/","");
                         String theme = getResources().getResourceName(currentTheme).replaceAll("com.example.gamecenter:id/","");
-
+                        currentModeGame = ((Spinner) findViewById(R.id.spinner_ModeGame)).getSelectedItem().toString();
                         ModeGame modeGame = new ModeGame(currentModeGame,sizeBoard, theme);
-                        Log.d("DEBUG", "eventChooseSize: " + theme);
+                        Log.d("DEBUG", "eventChooseSize: " + sizeBoard);
                         eventSendModeGameInfo(modeGame);
                     }
                 });

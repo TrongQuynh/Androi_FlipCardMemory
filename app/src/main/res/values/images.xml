@@ -25,7 +25,6 @@
         <item>"number_27"</item>
         <item>"number_16"</item>
 
-
     </array>
 
     <array name="food_theme">
@@ -80,11 +79,38 @@
         <item>"number_16"</item>
     </array>
 
+    <array name="animal_theme">
+        <item>"cat_1"</item>
+        <item>"cat_2"</item>
+        <item>"cat_3"</item>
+        <item>"cat_4"</item>
+        <item>"cat_5"</item>
+
+        <item>"cat_6"</item>
+        <item>"cat_7"</item>
+        <item>"cat_8"</item>
+        <item>"cat_9"</item>
+        <item>"cat_10"</item>
+
+        <item>"cat_11"</item>
+        <item>"cat_12"</item>
+        <item>"cat_13"</item>
+        <item>"cat_14"</item>
+        <item>"cat_15"</item>
+
+        <item>"cat_16"</item>
+        <item>"cat_17"</item>
+        <item>"cat_18"</item>
+        <item>"cat_19"</item>
+        <item>"cat_20"</item>
+    </array>
+
 
     <!--  Theme  -->
     <array name="FCM_Theme">
         <item>"FCM_FoodTheme"</item>
         <item>"FCM_WordTheme"</item>
         <item>"FCM_NumberTheme"</item>
+        <item>"FCM_AnimalTheme"</item>
     </array>
 </resources>
