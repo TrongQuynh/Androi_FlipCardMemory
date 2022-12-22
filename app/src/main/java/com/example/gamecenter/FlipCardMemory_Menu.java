@@ -34,6 +34,7 @@ public class FlipCardMemory_Menu extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_flip_card_memory_menu);
 
         getSupportActionBar().setTitle("Memory Game");
+        getSupportActionBar().hide();
 
         this.currentTheme = R.id.number_theme;
         this.currentSize = "3x2";
